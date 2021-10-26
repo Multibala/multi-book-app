@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-Team members
+Team members\
 190103066 - Miras Akhmet\
 190103166 - Aziza Karzhaubayeva\
 190103200 - Sayan Baikeyev\
