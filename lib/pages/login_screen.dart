@@ -21,18 +21,16 @@ class _LoginScreenState extends State<LoginScreen> {
          Container(
           margin:const EdgeInsets.fromLTRB(0,50,0,50),
           child:Column(
-           
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
                Container(
                  margin:const EdgeInsets.symmetric(vertical:25,horizontal:0),
-
                  alignment: Alignment.center,
                  child:const Text("Welcome to MultiApp",
-                 style: TextStyle(
-                   fontSize:25,
+                   style: TextStyle(
+                     fontSize:25,
+                   ),
                  ),
-                ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.6,
@@ -57,36 +55,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Container(
                     margin: const EdgeInsets.symmetric(
-                        vertical: 25, horizontal: 15),
+                      vertical: 25, horizontal: 15),
                     child: ElevatedButton(
-                        onPressed: () {}, child: const Text('Login')),
+                      onPressed: () {}, child: const Text('Login')),
                   ),
                   Container(
-                      child: ElevatedButton(
-                          onPressed: () {}, child: const Text('Sign Up')),
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 25, horizontal: 15)
-                          
-                          ),         
-                          
+                    child: ElevatedButton(
+                      onPressed: () {}, child: const Text('Sign Up')),
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 25, horizontal: 15)
+                  ),
                 ],
-
               ),
               Container(
-
                 color: Colors.blue,
                 height:150,
-                
               ),
-              
             ],
-            
-            
           ),
           ),
-
-          
-      
         ],
       ),
     );
