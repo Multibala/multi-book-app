@@ -11,140 +11,144 @@ class _MainScreenState extends State<MainScreen> {
   int _current_index = 0;
   List<bool> selected_category = [false, false, false];
   List<Card> posts = [];
+  var top_rating = [];
+  var mostly_readed = [];
+  var new_post = [];
+  
 
   @override
   void initState() {
     super.initState();
-    posts = [getPost(),getPost(),getPost(),getPost(),getPost()];
+    posts = [getPost(), getPost(), getPost(), getPost(), getPost()];
   }
 
   @override
   Widget build(BuildContext context) {
     List<Color> colors_selected = [Colors.white, Colors.white, Colors.white];
     return Scaffold(
-      
-      body: ListView(
-        
-
-        
-        children: [
+      body: ListView(children: [
         Container(
-           height: 150,
-           margin:EdgeInsets.symmetric(vertical:30),
-
-           child:
-          
-            Row(
-              
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                OutlinedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          (selected_category[0])
-                              ? Colors.greenAccent
-                              : Colors.white)),
-                  onPressed: () {
-                    setState(() {
-                      if (selected_category[0]) {
-                        selected_category[0] = false;
-                      } else {
-                        selected_category[0] = true;
-                      }
-                    });
-                  },
-                  child: Container(
-                    height: 100,
-                    margin: EdgeInsets.symmetric(horizontal: 15),
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    child: Text(
-                      'Video',
-                      style: TextStyle(color: Colors.black),
-                    ),
+          height: 150,
+          margin: EdgeInsets.symmetric(vertical: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              OutlinedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        (selected_category[0])
+                            ? Colors.greenAccent
+                            : Colors.white)),
+                onPressed: () {
+                  setState(() {
+                    if (selected_category[0]) {
+                      selected_category[0] = false;
+                    } else {
+                      selected_category[0] = true;
+                    }
+                  });
+                },
+                child: Container(
+                  height: 100,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  child: Text(
+                    'Video',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
-                OutlinedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          (selected_category[1])
-                              ? Colors.greenAccent
-                              : Colors.white)),
-                  onPressed: () {
-                    setState(() {
-                      if (selected_category[1]) {
-                        selected_category[1] = false;
-                      } else {
-                        selected_category[1] = true;
-                      }
-                    });
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 15),
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    height: 100,
-                    child: Text(
-                      'Audio',
-                      style: TextStyle(color: Colors.black),
-                    ),
+              ),
+              OutlinedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        (selected_category[1])
+                            ? Colors.greenAccent
+                            : Colors.white)),
+                onPressed: () {
+                  setState(() {
+                    if (selected_category[1]) {
+                      selected_category[1] = false;
+                    } else {
+                      selected_category[1] = true;
+                    }
+                  });
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  height: 100,
+                  child: Text(
+                    'Audio',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
-                OutlinedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          (selected_category[2])
-                              ? Colors.greenAccent
-                              : Colors.white)),
-                  onPressed: () {
-                    setState(() {
-                      if (selected_category[2]) {
-                        selected_category[2] = false;
-                      } else {
-                        selected_category[2] = true;
-                      }
-                    });
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: MediaQuery.of(context).size.width * 0.20,
-                    child: const Text(
-                      'Comics',
-                      style: TextStyle(color: Colors.black),
-                    ),
+              ),
+              OutlinedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        (selected_category[2])
+                            ? Colors.greenAccent
+                            : Colors.white)),
+                onPressed: () {
+                  setState(() {
+                    if (selected_category[2]) {
+                      selected_category[2] = false;
+                    } else {
+                      selected_category[2] = true;
+                    }
+                  });
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  alignment: Alignment.center,
+                  height: 100,
+                  width: MediaQuery.of(context).size.width * 0.20,
+                  child: const Text(
+                    'Comics',
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
-              ],
-            ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical:15),
-              height:50,
-              child:
-                Row( 
-                  mainAxisAlignment:MainAxisAlignment.spaceAround,
-                  
-                  
-                  children: [
-                  
-                    TextButton(onPressed: (){}, child: Text('New',style: TextStyle(color: Colors.black),)),
-                    TextButton(onPressed: (){}, child: Text('TOP rating',style: TextStyle(color: Colors.black),)),
-                    TextButton(onPressed: (){}, child: Text('mostly readed',style: TextStyle(color: Colors.black),)),
-                    
-                    
-
-                ],
-                ),
-            
-            ),
-        
-        getPost(),getPost(),getPost(),getPost(),getPost(),getPost(),getPost(),
-        
-
-           
-            
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 15),
+          height: 50,
+          alignment: Alignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'New',
+                    style: TextStyle(color: Colors.black),
+                  )),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'TOP rating',
+                    style: TextStyle(color: Colors.black),
+                  )),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'mostly readed',
+                    style: TextStyle(color: Colors.black),
+                  )),
+            ],
+          ),
+        ),
+        getPost(),
+        getPost(),
+        getPost(),
+        getPost(),
+        getPost(),
+        getPost(),
+        getPost(),
       ]),
 
       //
