@@ -1,14 +1,16 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:multi-book-app/model/creator.dart';
-import 'package:multi-book-app/profileScreenWidget/appbar_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/button_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/numbers_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/profile_widget.dart';
-import 'package:multi-book-app/utils/creator_preferences.dart';
-import 'package:multi-book-app/profileScreenWidget/appbar_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/button_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/numbers_widget.dart';
-import 'package:multi-book-app/profileScreenWidget/profile_widget.dart';
+import 'package:multi_book/model/creator.dart';
+import 'package:multi_book/pages/edit_profileScreenCreator.dart';
+import 'package:multi_book/profileScreenWidget/appbar_widget.dart';
+import 'package:multi_book/profileScreenWidget/button_widget.dart';
+import 'package:multi_book/profileScreenWidget/numbers_widget.dart';
+import 'package:multi_book/profileScreenWidget/profile_widget.dart';
+import 'package:multi_book/utils/creator_preferences.dart';
+import 'package:multi_book/profileScreenWidget/appbar_widget.dart';
+import 'package:multi_book/profileScreenWidget/button_widget.dart';
+import 'package:multi_book/profileScreenWidget/numbers_widget.dart';
+import 'package:multi_book/profileScreenWidget/profile_widget.dart';
 
 class creatorProfilePage extends StatefulWidget {
   @override
@@ -20,24 +22,32 @@ class _creatorProfilePageState extends State<creatorProfilePage> {
   Widget build(BuildContext context) {
     final creator = creatorPreferences.myCreator;
 
-    return Scaffold(
-      appBar: buildAppBar(context),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
-        children: [
-          ProfileWidget(
-            imagePath: creator.imagePath,
-            onClicked: () async {},
+    return ThemeSwitchingArea(
+      child: Builder(
+        builder: (context) => Scaffold(
+          appBar: buildAppBar(context),
+          body: ListView(
+            physics: BouncingScrollPhysics(),
+            children: [
+              ProfileWidget(
+                imagePath: creator.imagePath,
+                onClicked: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => EditProfilePage()),
+                  );
+                },
+              ),
+              const SizedBox(height: 24),
+              buildName(creator),
+              const SizedBox(height: 24),
+              Center(child: buildUpgradeButton()),
+              const SizedBox(height: 24),
+              NumbersWidget(),
+              const SizedBox(height: 48),
+              buildAbout(creator),
+            ],
           ),
-          const SizedBox(height: 24),
-          buildName(creator),
-          const SizedBox(height: 24),
-          Center(child: buildUpgradeButton()),
-          const SizedBox(height: 24),
-          NumbersWidget(),
-          const SizedBox(height: 48),
-          buildAbout(creator),
-        ],
+        ),
       ),
     );
   }

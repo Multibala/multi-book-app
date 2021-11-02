@@ -1,7 +1,9 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:multi-book-app/pages/profileScreenCreator.dart';
-import 'package:multi-book-app/profileScreenWidget/profile_widget.dart';
+import 'package:multi_book/pages/profileScreenCreator.dart';
+import 'package:multi_book/themes.dart';
+import 'package:multi_book/utils/creator_preferences.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,18 +16,22 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'User Profile';
+  static final String title = 'Creator Profile';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.blue.shade300,
-        dividerColor: Colors.black,
+    final creator = creatorPreferences.myCreator;
+
+    return ThemeProvider(
+      initTheme: creator.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
+      child: Builder(
+        builder: (context) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeProvider.of(context),
+          title: title,
+          home: creatorProfilePage(),
+        ),
       ),
-      title: title,
-      home: creatorProfilePage(),
     );
   }
 }

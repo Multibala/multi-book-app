@@ -1,4 +1,4 @@
-import 'package:multi-book-app/model/creator.dart';
+import 'package:multi_book/model/creator.dart';
 
 class creatorPreferences {
   static const myCreator = Creator(
